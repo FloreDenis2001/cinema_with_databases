@@ -14,6 +14,11 @@ public class Seats implements Comparable<Seats> {
         this.seatNumber = seatNumber;
     }
 
+    public Seats(int room_id, int seatNumber) {
+        this.room_id = room_id;
+        this.seatNumber = seatNumber;
+    }
+
     @Override
     public String toString() {
         String text = "Room Id : " + this.room_id + "\n";

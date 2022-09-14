@@ -18,7 +18,7 @@ public class MovieRepo extends Repository {
         executeStatement(insert);
     }
 
-    @Override
+
     public void delete(String title) {
         String delete = String.format("delete from movie where title='%s'", title);
         executeStatement(delete);
@@ -35,7 +35,7 @@ public class MovieRepo extends Repository {
         try {
             ResultSet set = statement.getResultSet();
             while (set.next()) {
-                movies.add(new Movie(set.getString(1), set.getString(2), set.getInt(3)));
+                movies.add(new Movie(set.getString(2), set.getString(3), set.getInt(4)));
             }
             return movies;
         } catch (Exception e) {
@@ -46,12 +46,21 @@ public class MovieRepo extends Repository {
 
     public Movie findMovie(String title) {
         List<Movie> movies = allMovie();
-        for (Movie x : movies) {
-            if (x.getTitle().compareTo(title) == 0) {
+        for (Movie x : movies)
+            if (x.getTitle().compareTo(title) == 0)
                 return x;
-            }
-        }
+
+
         return null;
+    }
+
+    public void eraseAll() {
+        String check = "SET FOREIGN_KEY_CHECKS = 0";
+        executeStatement(check);
+        String eraseAll = "truncate movie";
+        executeStatement(eraseAll);
+        String check2 = "SET FOREIGN_KEY_CHECKS = 1";
+        executeStatement(check2);
     }
 }
 

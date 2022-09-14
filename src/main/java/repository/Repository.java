@@ -33,6 +33,5 @@ public abstract class Repository {
     }
 
     public abstract void insert(Object o);
-    public abstract void delete(String property);
 
 }

@@ -5,11 +5,19 @@ import lombok.Data;
 @Data
 public class Room implements Comparable<Room> {
     private int id;
+    private String name;
     private String type;
     private int max_seats;
 
-    public Room(int id, String type, int max_seats) {
+    public Room(int id, String name, String type, int max_seats) {
         this.id = id;
+        this.name = name;
+        this.type = type;
+        this.max_seats = max_seats;
+    }
+
+    public Room(String name, String type, int max_seats) {
+        this.name = name;
         this.type = type;
         this.max_seats = max_seats;
     }
