@@ -18,6 +18,12 @@ public class Schedule implements Comparable<Schedule> {
         this.startTime = startTime;
     }
 
+    public Schedule(int room_id, int movie_id, LocalDateTime startTime) {
+        this.room_id = room_id;
+        this.movie_id = movie_id;
+        this.startTime = startTime;
+    }
+
 
     @Override
     public String toString() {

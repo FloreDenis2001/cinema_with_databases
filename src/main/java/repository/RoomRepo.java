@@ -16,8 +16,6 @@ public class RoomRepo extends Repository {
         executeStatement(check);
         String eraseAll = "truncate room";
         executeStatement(eraseAll);
-        String check2 = "SET FOREIGN_KEY_CHECKS = 1";
-        executeStatement(check2);
     }
 
     @Override

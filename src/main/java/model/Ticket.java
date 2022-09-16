@@ -17,6 +17,12 @@ public class Ticket implements Comparable<Ticket> {
         this.amount = amount;
         this.seat_id = seat_id;
     }
+    public Ticket( int schedules_id, int user_id, double amount, int seat_id) {
+        this.schedules_id = schedules_id;
+        this.user_id = user_id;
+        this.amount = amount;
+        this.seat_id = seat_id;
+    }
 
     @Override
     public String toString() {

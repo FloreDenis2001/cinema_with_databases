@@ -59,8 +59,6 @@ public class MovieRepo extends Repository {
         executeStatement(check);
         String eraseAll = "truncate movie";
         executeStatement(eraseAll);
-        String check2 = "SET FOREIGN_KEY_CHECKS = 1";
-        executeStatement(check2);
     }
 }
 

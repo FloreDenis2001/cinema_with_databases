@@ -18,8 +18,6 @@ public class SeatsRepo extends Repository {
         executeStatement(check);
         String eraseAll = "truncate seats";
         executeStatement(eraseAll);
-        String check2 = "SET FOREIGN_KEY_CHECKS = 1";
-        executeStatement(check2);
     }
 
     @Override
@@ -31,7 +29,7 @@ public class SeatsRepo extends Repository {
 
 
     public void delete(int room_id ,int seatNumber) {
-        String delete = String.format("delete from seats where seatNumber=%d && room_id=%d", seatNumber,room_id);
+        String delete = String.format("delete from seats where (seatNumber=%d AND room_id=%d)", seatNumber,room_id);
         executeStatement(delete);
     }
 

@@ -36,11 +36,12 @@ class SeatsRepoTest {
 
     @Test
     public void deleteTest(){
-        Room t=new Room(1,"Magic","vip",300);
+        eraseAll();
+        Room t=new Room("Magic","vip",200);
         this.roomRepo.insert(t);
         Seats x = new Seats(1,150);
         this.seatsRepo.insert(x);
-        seatsRepo.delete(1,150);
+        seatsRepo.delete(x.getRoom_id(),x.getSeatNumber());
         assertEquals(null,seatsRepo.findSeat(1,150));
 
     }
