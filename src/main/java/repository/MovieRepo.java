@@ -3,6 +3,8 @@ package repository;
 import model.Movie;
 
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +56,11 @@ public class MovieRepo extends Repository {
         return null;
     }
 
+    public void moviesOfTheDat(LocalDate time) {
+        List<Movie> movies=allMovie();
+        for(Movie x : movies){
+        }
+    }
     public void eraseAll() {
         String check = "SET FOREIGN_KEY_CHECKS = 0";
         executeStatement(check);

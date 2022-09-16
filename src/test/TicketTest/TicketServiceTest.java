@@ -62,7 +62,7 @@ class TicketServiceTest {
         Schedule s = new Schedule(1, 1, LocalDateTime.of(2022, 9, 12, 20, 10));
         scheduleService.addSchedules(s);
 
-        User u = new User("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1", "client");
+        User u = new Client("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1");
         userService.addUser(u);
 
         Ticket l = new Ticket(1, 1, 50.00, 1);
@@ -81,7 +81,7 @@ class TicketServiceTest {
         Schedule s = new Schedule(1, 1, LocalDateTime.of(2022, 9, 12, 20, 10));
         scheduleService.addSchedules(s);
 
-        User u = new User("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1", "client");
+        User u = new Client("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1");
         userService.addUser(u);
 
         Ticket l = new Ticket(1, 1, 50.00, 1);
@@ -99,7 +99,7 @@ class TicketServiceTest {
         Schedule s = new Schedule(1, 1, LocalDateTime.of(2022, 9, 12, 20, 10));
         scheduleService.addSchedules(s);
 
-        User u = new User("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1", "client");
+        User u = new Client("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1");
         userService.addUser(u);
 
         Ticket l = new Ticket(1, 1, 50.00, 1);
@@ -119,7 +119,7 @@ class TicketServiceTest {
         Schedule s = new Schedule(1, 1, LocalDateTime.of(2022, 9, 12, 20, 10));
         scheduleService.addSchedules(s);
 
-        User u = new User("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1", "client");
+        User u = new Client("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1");
         userService.addUser(u);
 
         Ticket l = new Ticket(1, 1, 50.00, 1);

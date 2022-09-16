@@ -3,7 +3,7 @@ package model;
 import lombok.Data;
 
 @Data
-public class User implements Comparable<User> {
+public abstract class User implements Comparable<User> {
 
     private int id;
     private String firstName;
@@ -31,6 +31,7 @@ public class User implements Comparable<User> {
         this.password = password;
         this.roles = roles;
     }
+
 
     @Override
     public String toString() {

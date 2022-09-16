@@ -10,6 +10,11 @@ public class Staff extends User {
         this.type = type;
     }
 
+    public Staff(String firstName, String lastName, int age, String email, String password, String type) {
+        super(firstName, lastName, age, email, password,"staff");
+        this.type = type;
+    }
+
     public String getType() {
         return type;
     }

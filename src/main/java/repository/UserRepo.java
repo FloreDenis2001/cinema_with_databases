@@ -1,5 +1,7 @@
 package repository;
 
+import model.Client;
+import model.Staff;
 import model.User;
 
 import java.sql.ResultSet;
@@ -19,11 +21,19 @@ public class UserRepo extends Repository {
         executeStatement(eraseAll);
 
     }
+
     @Override
     public void insert(Object o) {
-        User c = (User) o;
-        String insert = "insert into users (firstName, lastName, age, email, password, roles) value(" + String.format("'%s','%s',%d,'%s','%s','%s'", c.getFirstName(), c.getLastName(), c.getAge(), c.getEmail(), c.getPassword(), c.getRoles()) + ")";
-        executeStatement(insert);
+        User d = (User) o;
+        if (d.getRoles().compareTo("client") == 0) {
+            Client c = (Client) d;
+            String insert = "insert into users (firstName, lastName, age, email, password, roles) value(" + String.format("'%s','%s',%d,'%s','%s','%s'", c.getFirstName(), c.getLastName(), c.getAge(), c.getEmail(), c.getPassword(), c.getRoles()) + ")";
+            executeStatement(insert);
+        } else if (d.getRoles().compareTo("staff") == 0) {
+            Staff t = (Staff) d;
+            String insert = "insert into users (firstName, lastName, age, email, password, roles,type) value(" + String.format("'%s','%s',%d,'%s','%s','%s','%s'", t.getFirstName(), t.getLastName(), t.getAge(), t.getEmail(), t.getPassword(), t.getRoles(), t.getType()) + ")";
+            executeStatement(insert);
+        }
     }
 
     public void delete(String email, String password) {
@@ -31,8 +41,8 @@ public class UserRepo extends Repository {
         executeStatement(del);
     }
 
-    public void update(String email , String password ,String new_password){
-        String update = String.format("update users set password='%s' where email='%s' && password ='%s'",new_password,email,password);
+    public void update(String email, String password, String new_password) {
+        String update = String.format("update users set password='%s' where email='%s' && password ='%s'", new_password, email, password);
         executeStatement(update);
     }
 
@@ -42,7 +52,11 @@ public class UserRepo extends Repository {
         try {
             ResultSet set = statement.getResultSet();
             while (set.next()) {
-                users.add(new User(set.getInt(1), set.getString(2), set.getString(3), set.getInt(4), set.getString(5), set.getString(6), set.getString(7)));
+                if (set.getString(7) == null) {
+                    users.add(new Client(set.getInt(1), set.getString(2), set.getString(3), set.getInt(4), set.getString(5), set.getString(6)));
+                } else {
+                    users.add(new Staff(set.getInt(1), set.getString(2), set.getString(3), set.getInt(4), set.getString(5), set.getString(6), set.getString(7)));
+                }
             }
             return users;
         } catch (Exception e) {

@@ -21,6 +21,8 @@ public class MovieService {
         }
     }
 
+
+
     public Movie findByName(String movieName) {
         List<Movie> movieList = movieRepo.allMovie();
         for (Movie x : movieList)

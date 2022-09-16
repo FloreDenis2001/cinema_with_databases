@@ -43,7 +43,7 @@ class TicketRepoTest {
         Movie t = new Movie("Marvel", "action", 120);
         Schedule c = new Schedule(1, 1, LocalDateTime.of(2001, 10, 10, 14, 30));
         Seats s = new Seats(1, 20);
-        User u = new User("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1", "client");
+        User u = new Client("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1");
         movieRepo.insert(t);
         roomRepo.insert(x);
         scheduleRepo.insert(c);
@@ -60,7 +60,7 @@ class TicketRepoTest {
         Movie t = new Movie("Marvel", "action", 120);
         Schedule c = new Schedule(1, 1, LocalDateTime.of(2001, 10, 10, 14, 30));
         Seats s = new Seats(1, 20);
-        User u = new User("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1", "client");
+        User u = new Client("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1");
         movieRepo.insert(t);
         roomRepo.insert(x);
         scheduleRepo.insert(c);
