@@ -37,7 +37,7 @@ public class MovieRepo extends Repository {
         try {
             ResultSet set = statement.getResultSet();
             while (set.next()) {
-                movies.add(new Movie(set.getString(2), set.getString(3), set.getInt(4)));
+                movies.add(new Movie(set.getInt(1),set.getString(2), set.getString(3), set.getInt(4)));
             }
             return movies;
         } catch (Exception e) {
@@ -47,20 +47,44 @@ public class MovieRepo extends Repository {
     }
 
     public Movie findMovie(String title) {
-        List<Movie> movies = allMovie();
-        for (Movie x : movies)
-            if (x.getTitle().compareTo(title) == 0)
-                return x;
+        String findMovie = String.format("select * from movie where title='%s'", title);
+        executeStatement(findMovie);
+        List<Movie> movies=new ArrayList<>();
+        try {
+            ResultSet set = statement.getResultSet();
+            while(set.next()){
+                movies.add(new Movie(set.getInt(1),set.getString(2),set.getString(3), set.getInt(4)));
+            }
 
-
+            return movies.get(0);
+        } catch (Exception e) {
+            System.out.println("Nu exista filmul respectiv");
+        }
         return null;
     }
 
-    public void moviesOfTheDat(LocalDate time) {
-        List<Movie> movies=allMovie();
-        for(Movie x : movies){
+    public Movie movieFindById(int id) {
+        String findMovie = String.format("select * from movie where id=%d",id);
+        executeStatement(findMovie);
+        List<Movie> movies=new ArrayList<>();
+        try {
+            ResultSet set = statement.getResultSet();
+            while(set.next()){
+                movies.add(new Movie(set.getInt(1),set.getString(2),set.getString(3), set.getInt(4)));
+            }
+
+            return movies.get(0);
+        } catch (Exception e) {
+            System.out.println("Nu exista filmul respectiv");
         }
+        return null;
     }
+    public LocalDateTime finishTime(int movie_id, LocalDateTime startTime) {
+        Movie t = movieFindById(movie_id);
+        LocalDateTime finishTime = startTime.plusMinutes(t.getDuration());
+        return finishTime;
+    }
+
     public void eraseAll() {
         String check = "SET FOREIGN_KEY_CHECKS = 0";
         executeStatement(check);

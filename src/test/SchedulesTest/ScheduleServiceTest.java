@@ -99,4 +99,6 @@ class ScheduleServiceTest {
         assertThrows(StatusException.class,()->scheduleService.deleteSchedules(1, LocalDateTime.of(2022, 9, 12, 20, 20)));
 
     }
+
+
 }

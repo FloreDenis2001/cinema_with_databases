@@ -15,6 +15,7 @@ public class Movie implements Comparable<Movie> {
         this.type = type;
         this.duration = duration;
     }
+
     public Movie(String title, String type, int duration) {
         this.title = title;
         this.type = type;

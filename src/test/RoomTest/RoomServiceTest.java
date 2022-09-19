@@ -1,11 +1,16 @@
 package RoomTest;
 
 import exceptii.StatusException;
+import model.Movie;
 import model.Room;
+import model.Schedule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.RoomRepo;
+import services.MovieService;
 import services.RoomService;
+
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -68,6 +73,7 @@ class RoomServiceTest {
         roomService.addRoom(x);
         assertThrows(StatusException.class,()->roomService.updateRoom("olaf",150));
     }
+
 
 
 }

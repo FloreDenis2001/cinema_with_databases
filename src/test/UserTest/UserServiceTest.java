@@ -28,7 +28,7 @@ class UserServiceTest {
     public void addTest() throws StatusException {
         User x = new Client("Denis", "Flore", 20, "floredenis907@yahoo.com", "parola1");
         userService.addUser(x);
-        assertEquals("client", userRepo.findUser(x.getEmail()).getRoles());
+        assertEquals("staff", userRepo.findUser(x.getEmail()).getRoles());
     }
 
     @Test

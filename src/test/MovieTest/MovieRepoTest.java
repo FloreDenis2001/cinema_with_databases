@@ -23,7 +23,6 @@ class MovieRepoTest {
     }
 
 
-
     @Test
     public void insertTable() {
         Movie movie = new Movie("hulk", "action", 130);
@@ -32,19 +31,27 @@ class MovieRepoTest {
     }
 
     @Test
-    public void delete(){
+    public void delete() {
         Movie movie = new Movie("Iron Man", "action", 160);
         movieRepo2.insert(movie);
         movieRepo2.delete("Iron Man");
-        assertEquals(null,movieRepo2.findMovie("Iron Man"));
+        assertEquals(null, movieRepo2.findMovie("Iron Man"));
 
     }
 
     @Test
-    public void update(){
-        Movie movie=new Movie("Iron Man","action",160);
+    public void update() {
+        Movie movie = new Movie("Iron Man", "action", 160);
         movieRepo2.insert(movie);
-        movieRepo2.update("Iron Man",140);
-        assertEquals(140,movieRepo2.findMovie("Iron Man").getDuration());
+        movieRepo2.update("Iron Man", 140);
+        assertEquals(140, movieRepo2.findMovie("Iron Man").getDuration());
+    }
+
+
+    @Test
+    public void findByIdTable() {
+        Movie movie = new Movie("hulk", "action", 130);
+        movieRepo2.insert(movie);
+        assertEquals(130, movieRepo2.movieFindById(1).getDuration());
     }
 }
