@@ -1,10 +1,8 @@
 package repository;
 
-import model.Schedule;
 import model.Ticket;
 
 import java.sql.ResultSet;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +23,12 @@ public class TicketRepo extends Repository {
     @Override
     public void insert(Object o) {
         Ticket x = (Ticket) o;
-        String insert = "insert into ticket(schedules_id,user_id,amount,seat_id) values(" + String.format("%d,%d,%f,%d", x.getSchedules_id(), x.getUser_id(), x.getAmount(), x.getSeat_id()) + ")";
+        String insert = "insert into ticket(user_id,programari_id,amount) values(" + String.format("%d,%d,%f", x.getUser_id(), x.getProgramari_id(), x.getAmount()) + ")";
         executeStatement(insert);
     }
 
-    public void delete(int scheduleId) {
-        String del = String.format("delete from ticket where schedules_id=%d", scheduleId);
+    public void delete(int programareId) {
+        String del = String.format("delete from ticket where programari_id=%d",programareId);
         executeStatement(del);
     }
 
@@ -40,7 +38,7 @@ public class TicketRepo extends Repository {
         try {
             ResultSet set = statement.getResultSet();
             while (set.next()) {
-                tickets.add(new Ticket(set.getInt(1), set.getInt(2), set.getInt(3), set.getDouble(4), set.getInt(5)));
+                tickets.add(new Ticket(set.getInt(1), set.getInt(2), set.getInt(3), set.getDouble(4)));
             }
             return tickets;
         } catch (Exception e) {
@@ -52,7 +50,7 @@ public class TicketRepo extends Repository {
     public Ticket findSchedule(int scheduleId) {
         List<Ticket> tickets = allTickets();
         for (Ticket x : tickets)
-            if (x.getSchedules_id() == scheduleId)
+            if (x.getProgramari_id() == scheduleId)
                 return x;
         return null;
     }

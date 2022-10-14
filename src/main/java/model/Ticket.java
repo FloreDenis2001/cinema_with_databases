@@ -5,31 +5,27 @@ import lombok.Data;
 @Data
 public class Ticket implements Comparable<Ticket> {
     private int id;
-    private int schedules_id;
+    private int programari_id;
     private int user_id;
     private double amount;
-    private int seat_id;
 
-    public Ticket(int id, int schedules_id, int user_id, double amount, int seat_id) {
+    public Ticket(int id, int programari_id, int user_id, double amount) {
         this.id = id;
-        this.schedules_id = schedules_id;
+        this.programari_id = programari_id;
         this.user_id = user_id;
         this.amount = amount;
-        this.seat_id = seat_id;
     }
-    public Ticket( int schedules_id, int user_id, double amount, int seat_id) {
-        this.schedules_id = schedules_id;
+    public Ticket(int programari_id, int user_id, double amount) {
+        this.programari_id = programari_id;
         this.user_id = user_id;
         this.amount = amount;
-        this.seat_id = seat_id;
     }
 
     @Override
     public String toString() {
-        String text = "Schedules Id : " + this.schedules_id + "\n";
+        String text = "Programare Id : " + this.programari_id + "\n";
         text += "User Id : " + this.user_id + "\n";
         text += "Amount : " + this.amount + "\n";
-        text += "Seat Id : " + this.seat_id + "\n";
         return text;
     }
 

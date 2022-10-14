@@ -5,12 +5,13 @@ import model.User;
 import repository.*;
 import services.*;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class ViewClient {
     private MovieService movieService;
     private RoomService roomService;
-    private ScheduleService scheduleService;
+
     private TicketService ticketService;
     private UserService userService;
     private SeatsService seatsService;
@@ -21,7 +22,7 @@ public class ViewClient {
         this.client=clientele;
         movieService=new MovieService(new MovieRepo(database));
         roomService=new RoomService(new RoomRepo(database));
-        scheduleService=new ScheduleService(new ScheduleRepo(database));
+
         ticketService=new TicketService(new TicketRepo(database));
         userService=new UserService(new UserRepo(database));
         this.scanner=new Scanner(System.in);
@@ -48,7 +49,7 @@ public class ViewClient {
             switch (choose) {
                 case 1: movieService.printAllMovie();
                     break;
-                case 2:
+                case 2:movieoftheday();
                     break;
                 case 3:
                     break;
@@ -70,6 +71,11 @@ public class ViewClient {
             }
         }
     }
+public void movieoftheday(){
+    System.out.println("Introduceti data dorita : ");
+    String date= scanner.nextLine();
 
+
+}
 
 }

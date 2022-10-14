@@ -37,7 +37,7 @@ public class MovieRepo extends Repository {
         try {
             ResultSet set = statement.getResultSet();
             while (set.next()) {
-                movies.add(new Movie(set.getInt(1),set.getString(2), set.getString(3), set.getInt(4)));
+                movies.add(new Movie(set.getString(2), set.getString(3), set.getInt(4)));
             }
             return movies;
         } catch (Exception e) {
@@ -53,7 +53,7 @@ public class MovieRepo extends Repository {
         try {
             ResultSet set = statement.getResultSet();
             while(set.next()){
-                movies.add(new Movie(set.getInt(1),set.getString(2),set.getString(3), set.getInt(4)));
+                movies.add(new Movie(set.getString(2),set.getString(3), set.getInt(4)));
             }
 
             return movies.get(0);
@@ -70,7 +70,7 @@ public class MovieRepo extends Repository {
         try {
             ResultSet set = statement.getResultSet();
             while(set.next()){
-                movies.add(new Movie(set.getInt(1),set.getString(2),set.getString(3), set.getInt(4)));
+                movies.add(new Movie(set.getString(2),set.getString(3), set.getInt(4)));
             }
 
             return movies.get(0);
@@ -78,11 +78,6 @@ public class MovieRepo extends Repository {
             System.out.println("Nu exista filmul respectiv");
         }
         return null;
-    }
-    public LocalDateTime finishTime(int movie_id, LocalDateTime startTime) {
-        Movie t = movieFindById(movie_id);
-        LocalDateTime finishTime = startTime.plusMinutes(t.getDuration());
-        return finishTime;
     }
 
     public void eraseAll() {

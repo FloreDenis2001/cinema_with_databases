@@ -12,9 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class SeatsRepoTest {
     private SeatsRepo seatsRepo;
     private RoomRepo roomRepo;
+    private String database="cinema_test_db";
+
     public SeatsRepoTest() {
-        seatsRepo = new SeatsRepo("cinema_test_db");
-        roomRepo=new RoomRepo("cinema_test_db");
+        seatsRepo = new SeatsRepo(database);
+        roomRepo=new RoomRepo(database);
     }
 
 
@@ -45,4 +47,5 @@ class SeatsRepoTest {
         assertEquals(null,seatsRepo.findSeat(1,150));
 
     }
+
 }

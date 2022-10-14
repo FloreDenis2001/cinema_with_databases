@@ -3,15 +3,12 @@ package MovieTest;
 import exceptii.StatusException;
 import model.Movie;
 import model.Room;
-import model.Schedule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.MovieRepo;
 import repository.RoomRepo;
-import repository.ScheduleRepo;
 import services.MovieService;
 import services.RoomService;
-import services.ScheduleService;
 
 import java.time.LocalDateTime;
 
@@ -22,8 +19,6 @@ class MovieServiceTest {
     private MovieService movieService;
     private RoomService roomService;
     private RoomRepo roomRepo;
-    private ScheduleService scheduleService;
-    private  ScheduleRepo scheduleRepo;
     private String databases="cinema_test_db";
 
     public MovieServiceTest() {
@@ -31,14 +26,11 @@ class MovieServiceTest {
         movieService = new MovieService(movieRepo);
         roomRepo=new RoomRepo(databases);
         roomService=new RoomService(roomRepo);
-        scheduleRepo=new ScheduleRepo(databases);
-        scheduleService=new ScheduleService(scheduleRepo);
     }
 
     @BeforeEach
     public void eraseAll() {
         movieRepo.eraseAll();
-        scheduleRepo.eraseAll();
         roomRepo.eraseAll();
     }
 
@@ -97,10 +89,7 @@ class MovieServiceTest {
         Room x = new Room("Magic", "vip", 200);
         roomService.addRoom(x);
 
-        Schedule s = new Schedule(1, 1, LocalDateTime.of(2022, 9, 12, 20, 10));
-        scheduleService.addSchedules(s);
 
-        assertEquals(LocalDateTime.of(2022,9,12,22,40),movieRepo.finishTime(s.getMovie_id(),s.getStartTime()));
 
     }
 

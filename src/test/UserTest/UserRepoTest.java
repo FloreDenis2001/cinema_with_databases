@@ -45,9 +45,4 @@ class UserRepoTest {
         assertEquals("parola2", userRepo.findUser("floredenis907@yahoo.com").getPassword());
     }
 
-
-
-
-
-
 }

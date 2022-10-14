@@ -12,7 +12,7 @@ public class TicketService {
     }
 
     public void addTicket(Ticket x) throws StatusException {
-        Ticket t = ticketRepo.findSchedule(x.getSchedules_id());
+        Ticket t = ticketRepo.findSchedule(x.getProgramari_id());
         if (t == null) {
             ticketRepo.insert(x);
         } else {
